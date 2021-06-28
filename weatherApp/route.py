@@ -15,9 +15,9 @@ def get_weather(city):
     city_temp = requests.get(url, params=params)
 
     try:
-        descr = city_temp.json()['weather'][0]['main']
+        weather_type = city_temp.json()['weather'][0]['main']
         temp = city_temp.json()['main']['temp']
-        return int(temp), descr
+        return int(temp), weather_type
     except KeyError:
         flash("The city doesn't exist!", "danger")
         return None
@@ -30,23 +30,23 @@ def index():
         if not get_weather(form.city.data):
             return redirect(url_for('index'))
         temp = get_weather(form.city.data)[0]
-        descr = get_weather(form.city.data)[1]
+        weather_type = get_weather(form.city.data)[1]
         city_in = Cities.query.filter_by(city_name=form.city.data.upper()).first()
         if city_in:
             flash('The city has already been added to the list!', 'danger')
             return redirect(url_for('index'))
-        city = Cities(city_name=form.city.data.upper(), temp=temp, descriptions=descr)
+        city = Cities(city_name=form.city.data.upper(), temp=temp, weather_type=weather_type)
         db.session.add(city)
         db.session.commit()
         flash('Your city has been added!', 'success')
         return redirect(url_for('index'))
     elif request.method == 'GET':
         for item in cities:
-            new_temp = get_weather(item.city_name)[0]
-            new_descr = get_weather(item.city_name)[1]
+            temp = get_weather(item.city_name)[0]
+            weather_type = get_weather(item.city_name)[1]
             city = Cities.query.filter_by(city_name=item.city_name).first()
-            city.temp = new_temp
-            city.descriptions = new_descr
+            city.temp = temp
+            city.weather_type = weather_type
             db.session.commit()
         return render_template('index.html', cities=cities, form=form)
     return render_template('index.html', cities=cities, form=form)
