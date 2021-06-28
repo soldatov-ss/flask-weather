@@ -1,4 +1,4 @@
-*
+*, *:before, *:after
     box-sizing: border-box
     margin: 0
     padding: 0
@@ -15,26 +15,6 @@ html, body
 .weather
     padding: 30px 0
     position: relative
-    &_cards
-        display: grid
-        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr))
-        grid-gap: 1vw
-        grid-auto-rows: 25vw
-        padding-left: 20%
-        padding-right: 20%
-        margin-bottom: 2vw
-        justify-content: center
-    &_card
-        background: linear-gradient(#161616, #32524d)
-        padding: 0
-        border: none
-        box-shadow: 0 0 1vw rgba(0,0,0,0.5)
-        background-size: cover
-        border-radius: 0.5vw !important
-        color: white
-        font-weight: 600
-        text-shadow: 0px 0px 1vw rgba(0,0,0,0.7)
-        position: relative
     &_input
         height: 45px
         width: 30vw
@@ -60,19 +40,42 @@ html, body
     &_label
         color: #fff
         font-size: 19px
+    &_cards
+        margin-top: 20px
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+    &_card
+        margin:  20px 5px
+        border-radius: 20px
+        position: relative
+        overflow: hidden
+        width: 270px
+        height: 270px
+        background-color: white
+        box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1)
+        animation: appear 500ms ease-out forwards
+    &_temp 
+        position: absolute
+        font-family: 'Lato', sans-serif
+        font-weight: 300
+        font-size: 80px
+        color: #B8B8B8
+        bottom: 0
+        left: 35px
+        opacity: 0
+        transform: translateX(150px)
+        animation: title-appear 500ms ease-out 500ms forwards
+        margin: 56px 0
     &_name
         position: absolute
-        top: 25%
-        left: 50%
-        transform: translateX(-50%)
-        font-size: 2vw
-        text-align: center
-    &_temp
-        position: absolute
-        font-size: 2vw
-        top: 45%
-        left: 50%
-        transform: translateX(-50%)
+        font-size: 28px
+        color: lighten(#B8B8B8, 10%)
+        bottom: 0
+        left: 35px
+        margin: 28px 0
+        animation: title-appear 1s ease-out 500ms forwards
 .delete-wrapper 
 	text-align: right
 	font-size: 1vw
@@ -103,4 +106,27 @@ html, body
 	background-color: #639469
 .danger
 	background-color: #961a1a
+
+
     
+@keyframes appear
+  0%
+    transform: scale(0)
+
+  50%
+    transform: scale(1.05)
+
+  75%
+    transform: scale(0.95)
+
+  100%
+    transform: scale(1)
+
+@keyframes title-appear
+  from
+    opacity: 0
+    transform: translateX(150px)
+
+  to
+    opacity: 1
+    transform: translateX(0px)

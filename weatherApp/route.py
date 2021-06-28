@@ -9,7 +9,7 @@ def get_weather(city):
     url = 'https://api.openweathermap.org/data/2.5/weather'
     params = {
         'q': f'{city}',
-        'appid': '3e91701b1eece1277ca16b0fc889bc0d',
+        'appid': '',               # <--WRITE YOUR TOKEN FROM OPENWEATHERMAP :)
         'units': 'metric'
     }
     city_temp = requests.get(url, params=params)
@@ -19,7 +19,7 @@ def get_weather(city):
         temp = city_temp.json()['main']['temp']
         return int(temp), descr
     except KeyError:
-        flash("The city doesn't exist!", 'danger')
+        flash("The city doesn't exist!", "danger")
         return None
 
 @app.route('/', methods=['POST', 'GET'])
@@ -33,7 +33,7 @@ def index():
         descr = get_weather(form.city.data)[1]
         city_in = Cities.query.filter_by(city_name=form.city.data.upper()).first()
         if city_in:
-            flash('The city has already been added to the list!')
+            flash('The city has already been added to the list!', 'danger')
             return redirect(url_for('index'))
         city = Cities(city_name=form.city.data.upper(), temp=temp, descriptions=descr)
         db.session.add(city)
