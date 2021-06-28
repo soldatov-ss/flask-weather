@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.min.css">
+    <title>Weather App</title>
+</head>
+<body>
+<div class="weather">
+    <div class="container">
+        <div class="flash_message">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class='flash'>
+                {% for category, message in messages %}
+                <div class="flashes {{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+        <div class="weather_box">
+            <form action="" method="POST">
+                {{ form.hidden_tag() }}
+                <div class='weather_form'>
+                    {{ form.city.label(class='weather_label') }}
+                    {{ form.city(class='weather_input') }}
+                </div>
+                <div class="weather_btn">
+                    {{ form.submit(class="btn btn-outline-light") }}
+                </div>
+            </form>
+        </div>
+    {% if cities %}
+        <div class="weather_cards">
+            {% for city in cities %}
+                <div class="weather_card">
+                    <div class="delete-wrapper">
+                        <form action="{{ url_for('delete', city_id=city.id) }}" method="POST">
+                            <button class="delete-button" type="submit">&#10006;</button>
+                        </form>
+                    </div>
+                    <div class='weather_name'>{{city.city_name}}</div>
+                    <div class='weather_temp'>{{city.temp}}°C</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+        
+        </div>
+    </div>
+</div>
+</body>
+</html>
