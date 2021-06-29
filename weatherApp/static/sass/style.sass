@@ -13,75 +13,75 @@ html, body
 	font-family: 'Open Sans', sans-serif
 
 .weather
-    padding: 30px 0
-    position: relative
-    &_type
-        height: 6vw
-        width: 6vw
-        position: absolute
-        top: 2%
-        right: 8%
-    &_input
-        height: 45px
-        width: 30vw
-        background-color: #ffffff
-        border-radius: 5px
-        margin-bottom: 15px
-        border: none
-        font-size: 17px
-        padding: 0 15px
-        font-weight: 300
-        color: #4b4b4b
-    &_box
-        position: relative
-        margin-top: 5%
-        padding-left: 7%
-        padding-right: 10%
-        text-align: center
-        margin-bottom: 5%
-    &_btn
-        position: absolute
-        left: 68%
-        top: 4px
-    &_label
-        color: #fff
-        font-size: 19px
-    &_cards
-        margin-top: 20px
-        display: flex
-        flex-direction: row
-        flex-wrap: wrap
-        justify-content: center
-    &_card
-        margin:  20px 5px
-        border-radius: 20px
-        position: relative
-        overflow: hidden
-        width: 270px
-        height: 270px
-        background-color: white
-        box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1)
-        animation: appear 500ms ease-out forwards
-    &_temp 
-        position: absolute
-        font-family: 'Lato', sans-serif
-        font-weight: 300
-        font-size: 80px
-        color: #818181
-        bottom: 0
-        left: 35px
-        opacity: 0
-        transform: translateX(150px)
-        animation: title-appear 500ms ease-out 500ms forwards
-        margin: 56px 0
-    &_name
-        position: absolute
-        font-size: 28px
-        color: lighten(#818181, 10%)
-        bottom: 0
-        left: 35px
-        margin: 28px 0
-        animation: title-appear 1s ease-out 500ms forwards
+	padding: 30px 0
+	position: relative
+	&_type
+		height: 6vw
+		width: 6vw
+		position: absolute
+		top: 2%
+		right: 8%
+	&_input
+		height: 45px
+		width: 30vw
+		background-color: #ffffff
+		border-radius: 5px
+		margin-bottom: 15px
+		border: none
+		font-size: 17px
+		padding: 0 15px
+		font-weight: 300
+		color: #4b4b4b
+	&_box
+		position: relative
+		margin-top: 5%
+		padding-left: 7%
+		padding-right: 10%
+		text-align: center
+		margin-bottom: 5%
+		display: flex
+		justify-content: space-around
+	
+	&_label
+		color: #fff
+		font-size: 19px
+	&_cards
+		margin-top: 20px
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: center
+	&_card
+		margin:  20px 5px
+		border-radius: 20px
+		position: relative
+		overflow: hidden
+		width: 270px
+		height: 270px
+		background-color: white
+		box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1)
+		animation: appear 500ms ease-out forwards
+
+	&_temp 
+		position: absolute
+		font-family: 'Lato', sans-serif
+		font-weight: 300
+		font-size: 80px
+		color: #818181
+		bottom: 0
+		left: 35px
+		opacity: 0
+		transform: translateX(150px)
+		animation: title-appear 500ms ease-out 500ms forwards
+		margin: 56px 0
+	&_name
+		position: absolute
+		font-size: 28px
+		color: lighten(#818181, 10%)
+		bottom: 0
+		left: 35px
+		margin: 28px 0
+		animation: title-appear 1s ease-out 500ms forwards
 .delete-wrapper 
 	text-align: right
 	font-size: 1vw
@@ -96,7 +96,10 @@ html, body
 	margin: 0
 	padding: 0
 	border: none
-	color: white
+	color: #818181
+button
+	&:hover
+		transform: scale(1.25)
 .container
     position: relative
 .flashes 
@@ -136,3 +139,5 @@ html, body
   to
     opacity: 1
     transform: translateX(0px)
+
+@import '../sass/media'

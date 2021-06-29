@@ -26,13 +26,9 @@
         <div class="weather_box">
             <form action="" method="POST">
                 {{ form.hidden_tag() }}
-                <div class='weather_form'>
                     {{ form.city.label(class='weather_label') }}
                     {{ form.city(class='weather_input') }}
-                </div>
-                <div class="weather_btn">
                     {{ form.submit(class="btn btn-outline-light") }}
-                </div>
             </form>
         </div>
     {% if cities %}
