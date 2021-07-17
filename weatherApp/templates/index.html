@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
     <link rel="stylesheet" href="/static/css/style.min.css">
-    <title>Weather App</title>
+    <title>Weather</title>
 </head>
 <body>
 <div class="weather">
@@ -34,20 +34,33 @@
     {% if cities %}
         <div class="weather_cards">
             {% for city in cities %}
-                <div class="weather_card">
-                    <div class="delete-wrapper">
-                        <form action="{{ url_for('delete', city_id=city.id) }}" method="POST">
-                            <button class="delete-button" type="submit">&#10006;</button>
-                        </form>
+                <div class="weather_card flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="/static/img/{{ weather_now[city][1] }}.png" alt="weather type" class="weather_type">
+                            <h1 class='weather_temp'>{{ weather_now[city][0] }}°</h1>
+                            <div id="myBtn" class='weather_name'>{{city.city_name}}</div>
+                        </div>
+                
+                        <div class="flip-card-back">
+                            <div class="delete-wrapper">
+                                <form action="{{ url_for('delete', city_id=city.id) }}" method="POST">
+                                    <button class="delete-button" type="submit">&#10006;</button>
+                                </form>
+                            </div>
+                            {% for item in weather_in_4_hours[city] %}
+                                <div class="card-back_weath">
+                                    <div class="card-back_weath-time">{{ item[0] }}</div>
+                                    <img src="/static/img/{{ item[2] }}.png" alt="weather type" class="card-back_weath-img">
+                                    <div class="card-back_weath-temp">{{ item[1] }}°</div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <img src="/static/img/{{ city.weather_type }}.png" alt="weather type" class="weather_type">
-                    <h1 class='weather_temp'>{{ city.temp }}°</h1>
-                    <div class='weather_name'>{{city.city_name}}</div>
                 </div>
             {% endfor %}
         </div>
     {% endif %}
-        
         </div>
     </div>
 </div>

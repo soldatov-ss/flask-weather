@@ -74,6 +74,7 @@ html, body
 		transform: translateX(150px)
 		animation: title-appear 500ms ease-out 500ms forwards
 		margin: 56px 0
+	
 	&_name
 		position: absolute
 		font-size: 28px
@@ -83,6 +84,7 @@ html, body
 		margin: 28px 0
 		animation: title-appear 1s ease-out 500ms forwards
 .delete-wrapper 
+	position: absolute
 	text-align: right
 	font-size: 1vw
 	height: 20%
@@ -96,7 +98,7 @@ html, body
 	margin: 0
 	padding: 0
 	border: none
-	color: #818181
+	color: #6d2b2b
 button
 	&:hover
 		transform: scale(1.25)
@@ -117,6 +119,70 @@ button
 	background-color: #961a1a
 
 
+// -----------------------------------------------------
+.flip-card
+	background-color: transparent
+	perspective: 1000px
+
+  /* Remove this if you don't want the 3D effect
+
+/* This container is needed to position the front and back side
+
+.flip-card-inner
+	position: relative
+	width: 100%
+	height: 100%
+	text-align: center
+	transition: transform 0.8s
+	transform-style: preserve-3d
+
+/* Do an horizontal flip when you move the mouse over the flip box container
+
+.flip-card:hover  .flip-card-inner
+	transform: rotateY(180deg)
+
+/* Position the front and back side
+
+.flip-card-front, .flip-card-back
+	position: absolute
+	width: 100%
+	height: 100%
+	-webkit-backface-visibility: hidden
+
+  /* Safari
+	backface-visibility: hidden
+
+/* Style the front side (fallback if image is missing)
+
+.flip-card-front
+	background-color: white
+	color: black
+
+/* Style the back side
+
+.flip-card-back
+	position: relative
+	background-color: white
+	transform: rotateY(180deg)
+	display: grid
+	grid-template-rows: repeat(2, auto)
+	grid-template-columns: repeat(2, auto)
+.card-back_weath
+	border: 2px solid #818181
+	&-time 
+		font-family: 'Lato', sans-serif
+		color: #818181
+		font-size: 25px
+		background-color: #cecece
+	&-img
+		margin: 5px 0
+		height: 40px
+		weigth: 40px
+	&-temp
+		font-family: 'Lato', sans-serif
+		color: #818181
+		font-size: 25px
+//   --------------------------------
     
 @keyframes appear
   0%
@@ -140,4 +206,6 @@ button
     opacity: 1
     transform: translateX(0px)
 
+
+	
 @import '../sass/media'
