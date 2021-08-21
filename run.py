@@ -1,4 +1,7 @@
+import asyncio
+
 from weatherApp import app
 
 if __name__ == '__main__':
-    app.run()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(app.run())
